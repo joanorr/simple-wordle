@@ -1,0 +1,41 @@
+.Cell {
+  align-items: center;
+  display: flex;
+  font-family: sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  height: 62px;
+  justify-content: center;
+  margin: 3px;
+  width: 62px;
+}
+
+.Cell.empty {
+  background-color: #fff;
+  border: 2px solid #ccc;
+  color: #000;
+}
+
+.Cell.filled {
+  background-color: #fff;
+  border: 2px solid #333;
+  color: #000;
+}
+
+.Cell.incorrect {
+  background-color: #787c7e;
+  border: 2px solid #787c7e;
+  color: #fff;
+}
+
+.Cell.correct-letter {
+  background-color: #c9b458;
+  border: 2px solid #c9b458;
+  color: #fff;
+}
+
+.Cell.correct-position {
+  background-color: #6aaa64;
+  border: 2px solid #6aaa64;
+  color: #fff;
+}

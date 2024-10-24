@@ -1,0 +1,11 @@
+.App {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  padding: 50px;
+  width: 100%;
+}
+.HiddenInputToGrabFocus {
+  opacity: 0.0;
+}

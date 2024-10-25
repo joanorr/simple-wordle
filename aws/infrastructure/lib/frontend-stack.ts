@@ -3,13 +3,18 @@ import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as S3Deployment from 'aws-cdk-lib/aws-s3-deployment';
 import {Construct} from 'constructs';
 
-const FRONTEND_BUILD_FOLDER = '../../frontend/build/';
+
+interface FrontendStackProps extends cdk.StackProps {
+  bucketName: string;
+}
 
 export class FrontendStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+
+  constructor(scope: Construct, id: string, props: FrontendStackProps) {
     super(scope, id, props);
 
     const bucket = new s3.Bucket(this, 'PublicBucket', {
+      bucketName: props.bucketName,
       autoDeleteObjects: true,
       blockPublicAccess: new s3.BlockPublicAccess({
         blockPublicAcls: false,
@@ -20,15 +25,6 @@ export class FrontendStack extends cdk.Stack {
       publicReadAccess: true,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       websiteIndexDocument: "index.html",
-    });
-
-    new S3Deployment.BucketDeployment(this, "Deployment", {
-      sources: [S3Deployment.Source.asset(FRONTEND_BUILD_FOLDER)],
-      destinationBucket: bucket,
-    });
-
-    new cdk.CfnOutput(this, "WordleDomain", {
-      value: bucket.bucketWebsiteDomainName,
     });
   }
 }

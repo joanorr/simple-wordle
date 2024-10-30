@@ -1,5 +1,5 @@
 import * as cdk from 'aws-cdk-lib';
-import {CodeBuildStep, CodePipeline, CodePipelineSource, ShellStep, Wave} from 'aws-cdk-lib/pipelines';
+import {CodeBuildStep, CodePipeline, CodePipelineSource, ShellStep} from 'aws-cdk-lib/pipelines';
 import * as ssm from 'aws-cdk-lib/aws-ssm';
 import {Construct} from 'constructs';
 import { FrontendStack } from './frontend-stack';

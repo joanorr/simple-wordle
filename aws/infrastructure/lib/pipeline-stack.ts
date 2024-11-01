@@ -99,7 +99,6 @@ interface CreateAppStageProps extends cdk.StageProps {
 
 class CreateAppStage extends cdk.Stage {
 
-
   constructor(scope: Construct, id: string, props: CreateAppStageProps) {
     super(scope, id, props);
 
@@ -111,6 +110,8 @@ class CreateAppStage extends cdk.Stage {
   }
 }
 
+// Generate a bucket name which is namespaced to account and region, but without
+// the risk of exposing the account number in its name.
 function getBucketName(env:string, account?: string, region?: string) {
   if (account && region) {
     const hash = crypto.createHash('md5')

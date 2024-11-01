@@ -30,6 +30,10 @@ export class FrontendStack extends cdk.Stack {
       domainName: props.domainName,
     });
 
+    // DnsValidatedCertificate is deprecated but it does some useful magic for
+    // cross-region certificate creation which Certificate doesn't do. Longer
+    // term it would be better to manage certificates in a separate stack and
+    // import their ARNs.
     const certificate = new certificatemanager.DnsValidatedCertificate(
       this, 'Cert', {
         domainName: props.domainName,
